@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&diplay=swap');
+*{
+    margin: 0;
+    font-family:'Poppins', sans-serif;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+/* Nav Bar */
+.nav img{
+    float: left;
+    margin: 0;
+    height: 100%;
+    position: relative;
+    top: -4px;
+}
+
+.nav {
+    color: #fff;
+    background-color: #3C273C;
+    width: 100%;
+    height: 100px;
+}
+
+li a{
+    text-decoration: none;
+    color: white;
+}
+
+#menu > li{
+    position: relative;
+    list-style-type: none;
+    display: block;
+    float:right;
+    text-align:center;
+    padding: 14px;
+    margin-right: 30px;
+}
+
+.nav ul > li:hover{
+    background-color: #201520;
+    top: 8px;
+}
+
+#uniname{
+    display: inline-block;
+    position: relative;
+    top: 39px;
+    right: -40px;
+}
+.dropdown{
+    display: none;
+}
+
+.faq{
+    display: none;
+}
+
+/* left photo */
+.left-div{
+    float : left;
+    display: inline-block;
+    margin-right: 70px;
+    width: 400px;
+    height: 500px; 
+}
+.student-photo{
+    position: relative;
+    margin: 50px;
+    width: 60%;
+    top: 70px;
+}
+
+/* Body text */
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container{
+    display: inline-block;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    left:400px;
+    top: 100px;
+}
+.container h1{
+    color: #3C273C;
+}
+
+.tab{
+    position: relative;
+    background: #fff;
+    padding: 0 20px 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.tab input{
+    appearance: none;
+}
+.tab label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.tab label::after{
+    content: "+";
+    position: absolute;
+    right: 20px;
+    font-size: 2em;
+    color: #8e8b8e;
+    transition: transform 1s;
+}
+.tab:hover label::after{
+    color: #000000;
+}
+.tab input:checked ~ label::after{
+    transform: rotate(135deg);
+    color: #8e8b8e;
+    
+}
+.container .tab label h2{
+    width: 40px;
+    width: 60px;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.25em;
+    border-radius: 5px;
+    margin-right: 10px;
+    
+}
+.container .tab input:checked~label~h2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 8em;
+    justify-content: flex-end;
+    padding: 20px;
+}
+.container .tab:nth-child(2) label h2 {
+    background: linear-gradient(135deg, #70f570, #49c628);
+}
+
+.container .tab:nth-child(3) label h2 {
+    background: linear-gradient(135deg, #3c8ce7, #00eaff);
+}
+
+.container .tab:nth-child(4) label h2 {
+    background: linear-gradient(135deg, #ff96f9, #c32bac);
+}
+
+.container .tab:nth-child(5) label h2 {
+    background: linear-gradient(135deg, #fd6e6a, #ffc600);
+}
+.container .tab label h3 {
+    position: relative;
+    font-weight: 500;
+    color: #333;
+    z-index: 10;
+}
+.container .tab input:checked~label h3 {
+    background: #fff;
+    padding: 2px 10px;
+    color: #333;
+    border-radius: 2px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+.container .tab .content {
+    max-height: 0;
+    transition: 1s;
+    overflow: hidden;
+}
+.container .tab input:checked~.content {
+    max-height: 100vh;
+}
+.container .tab .content p {
+    position: relative;
+    padding: 10px 0;
+    color: #333;
+    z-index: 10;
+}
+#form a:hover{
+    position: relative;
+    font-size: 1.1em;
+    top: 5px
+}
+
+/*Footer*/
+.open-button {
+    background-color: #04AA6D ;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 1;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 150px;
+  }
+  
+  /* The popup chat - hidden by default */
+  .chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width textarea */
+  .form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+    min-height: 200px;
+  }
+  
+  /* When the textarea gets focus, do something */
+  .form-container textarea:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/send button */
+  .form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+.foot{
+    color: white;
+    text-align: justify;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: baseline;
+    align-content: center;
+    background-color: #3C273C;
+    height: 165px;
+    padding: 14px;
+}
+.contact{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.address{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+}
+.socialmedia{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+}
+.fa.fa-facebook-f.fa-2x{
+    color: blue;
+}
+.fa.fa-instagram.fa-2x{
+    color: #e68721d6
+}
+.fa.fa-whatsapp.fa-2x{
+    color:green;
+}
+
+@media (max-width: 768px){
+    body{
+    }
+    .left-div{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 500px;
+        height: 500px;
+        margin-left: 30px;
+        margin-bottom: 50px;
+    }
+    .student-photo{
+        margin-top: -50px;
+        width: 70%;
+    }
+
+    .faq{
+        padding: 30px;
+        margin-left: 20px;
+        display: block;
+        color: #3C273C;
+    }
+/*body*/
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container{
+    margin-top: 50px;
+    margin-bottom: 70px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    left: 400px;
+    top: 100px;
+}
+.container h1{
+    display: none;
+    color: #3C273C;
+}
+
+.tab{
+    position: relative;
+    background: #fff;
+    padding: 0 20px 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.tab input{
+    appearance: none;
+}
+.tab label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.tab label::after{
+    content: "+";
+    position: absolute;
+    right: 20px;
+    font-size: 2em;
+    color: #8e8b8e;
+    transition: transform 1s;
+}
+.tab:hover label::after{
+    color: #000000;
+}
+.tab input:checked ~ label::after{
+    transform: rotate(135deg);
+    color: #8e8b8e;
+    
+}
+.container .tab label h2{
+    width: 40px;
+    width: 60px;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.25em;
+    border-radius: 5px;
+    margin-right: 10px;
+    
+}
+.container .tab input:checked~label~h2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 8em;
+    justify-content: flex-end;
+    padding: 20px;
+}
+.container .tab:nth-child(2) label h2 {
+    background: linear-gradient(135deg, #70f570, #49c628);
+}
+
+.container .tab:nth-child(3) label h2 {
+    background: linear-gradient(135deg, #3c8ce7, #00eaff);
+}
+
+.container .tab:nth-child(4) label h2 {
+    background: linear-gradient(135deg, #ff96f9, #c32bac);
+}
+
+.container .tab:nth-child(5) label h2 {
+    background: linear-gradient(135deg, #fd6e6a, #ffc600);
+}
+.container .tab label h3 {
+    position: relative;
+    font-weight: 500;
+    color: #333;
+    z-index: 10;
+}
+.container .tab input:checked~label h3 {
+    background: #fff;
+    padding: 2px 10px;
+    color: #333;
+    border-radius: 2px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+.container .tab .content {
+    max-height: 0;
+    transition: 1s;
+    overflow: hidden;
+}
+.container .tab input:checked~.content {
+    max-height: 100vh;
+}
+.container .tab .content p {
+    position: relative;
+    padding: 10px 0;
+    color: #333;
+    z-index: 10;
+}
+#form a:hover{
+    position: relative;
+    font-size: 1.1em;
+    top: 5px
+}
+}  
+
+@media (max-width: 850px){
+#menu{
+    display: none;
+}
+.dropdown{
+    display: inline-block;
+    float: right;
+    margin: 30px 20px 20px 0px;
+}
+.dropdown button{
+    background-color: #3C273C;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.dropdown a{
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+
+}
+.dropdown .content{
+    display: none;
+    background-color: white;
+    position: absolute;
+    right: 20px;
+    min-width: 100px;
+    box-shadow: 2px 2px 5px black;
+
+}
+.dropdown:hover .content{
+    display: block; 
+}
+.dropdown:hover button{
+    color: #000000;
+    background-color: #fff;
+}
+.dropdown a:hover{
+    background-color: #8e8b8e;
+}
+.foot{
+    height: auto;
+}
+}
+
