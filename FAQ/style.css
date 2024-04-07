@@ -35,6 +35,7 @@ li a{
     text-align:center;
     padding: 14px;
     margin-right: 30px;
+    cursor: default;
 }
 
 .nav ul > li:hover{
@@ -100,6 +101,7 @@ li a{
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
     overflow: hidden;
+    z-index: 0;
 }
 .tab input{
     appearance: none;
@@ -137,7 +139,7 @@ li a{
     margin-right: 10px;
     
 }
-.container .tab input:checked~label~h2 {
+.container .tab input:checked~label h2 {
     position: absolute;
     top: 0;
     left: 0;
@@ -147,6 +149,7 @@ li a{
     font-size: 8em;
     justify-content: flex-end;
     padding: 20px;
+    z-index :10;
 }
 .container .tab:nth-child(2) label h2 {
     background: linear-gradient(135deg, #70f570, #49c628);
@@ -167,7 +170,7 @@ li a{
     position: relative;
     font-weight: 500;
     color: #333;
-    z-index: 10;
+    z-index: 0; /*10*/
 }
 .container .tab input:checked~label h3 {
     background: #fff;
@@ -196,47 +199,70 @@ li a{
     top: 5px
 }
 
-/*Footer*/
+
 .open-button {
-    background-color: #04AA6D ;
+    background: linear-gradient(90deg, #9789aa,#371E59);
+   /* background: linear-gradient(135deg, #3c8ce7, #00eaff);*/
     color: white;
     padding: 16px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     opacity: 1;
-    position: fixed;
+    position: absolute;
     bottom: 23px;
     right: 28px;
-    width: 150px;
+    width: 140px; 
+    margin-bottom:80px ;
   }
   
+
   /* The popup chat - hidden by default */
   .chat-popup {
     display: none;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 15px;
-    border: 3px solid #f1f1f1;
-    z-index: 9;
+    /* border: 3px solid #f1f1f1; */
+   /* z-index: 10000;*/
   }
   
   /* Add styles to the form container */
   .form-container {
     max-width: 300px;
     padding: 10px;
-    background-color: white;
+    background-color: #E8DAEF;
+    /*background-color: rgb(191, 191, 225);*/
+    margin-bottom: 85px;
+    border-radius: 5px;    
+    
+  }
+  .container >:active .form-container{
+    opacity: 1;
+  }
+  .form-container img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
   }
   
+  .form-container .chat-text{
+    color: #371E59;
+  }
   /* Full-width textarea */
   .form-container textarea {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
+    border: 1px solid rgb(172, 168, 168);
+    background: white;
     resize: none;
-    min-height: 200px;
+    min-height:180px; /*95*/
+    border-radius: 5px;
+  }
+  .form-container .textareaTop{
+    min-height : 100px;
+    margin-bottom: -1px;
   }
   
   /* When the textarea gets focus, do something */
@@ -245,27 +271,39 @@ li a{
     outline: none;
   }
   
+  
   /* Set a style for the submit/send button */
   .form-container .btn {
-    background-color: #04AA6D;
+    background-color: #371E59;
     color: white;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 48%;
     margin-bottom:10px;
     opacity: 0.8;
+    display: inline;
+    border-radius: 50px;
+  }
+  .form-container .btn:hover{
+    background-color: rgb(124, 226, 124);
+    transition: 0.5s;
+
   }
   
   /* Add a red background color to the cancel button */
   .form-container .cancel {
+    background-color:  #a68cca;
+  }
+  .form-container .cancel:hover{
+    transition: 0.5s;
     background-color: red;
   }
-  
   /* Add some hover effects to buttons */
   .form-container .btn:hover, .open-button:hover {
     opacity: 1;
   }
+  /*footer*/
 .foot{
     color: white;
     text-align: justify;
@@ -275,7 +313,7 @@ li a{
     align-items: baseline;
     align-content: center;
     background-color: #3C273C;
-    height: 165px;
+    height: 130px;
     padding: 14px;
 }
 .contact{
@@ -307,6 +345,56 @@ li a{
 }
 
 @media (max-width: 768px){
+    .nav img{
+        float: left;
+        margin: 0;
+        height: 100%;
+        position: relative;
+        top: -4px;
+    }
+    
+    .nav {
+        color: #fff;
+        background-color: #3C273C;
+        width: 39em;
+        height: 100px;
+    }
+    
+    li a{
+        text-decoration: none;
+        color: white;
+    }
+    
+    #menu > li{
+        position: relative;
+        list-style-type: none;
+        display: block;
+        float:right;
+        text-align:center;
+        padding: 14px;
+        margin-right: 300px;
+        cursor: default;
+    }
+    
+    .nav ul > li:hover{
+        background-color: #201520;
+        top: 8px;
+
+    }
+    #uniname{
+        display: inline-block;
+        position: relative;
+        top: 39px;
+        right: -40px;
+    }
+    .dropdown{
+        display: none;
+    }
+    
+    .faq{
+        display: none;
+    }
+    
     body{
     }
     .left-div{
@@ -395,7 +483,7 @@ li a{
     margin-right: 10px;
     
 }
-.container .tab input:checked~label~h2 {
+.container .tab input:checked ~ label h2 {
     position: absolute;
     top: 0;
     left: 0;
@@ -405,6 +493,7 @@ li a{
     font-size: 8em;
     justify-content: flex-end;
     padding: 20px;
+    
 }
 .container .tab:nth-child(2) label h2 {
     background: linear-gradient(135deg, #70f570, #49c628);
@@ -448,11 +537,138 @@ li a{
     color: #333;
     z-index: 10;
 }
+
 #form a:hover{
     position: relative;
     font-size: 1.1em;
     top: 5px
 }
+/*form bot*/
+.open-button {
+    background: linear-gradient(90deg, #9789aa,#371E59);
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 1;
+    position: fixed;
+    bottom: 205px;
+    right: 20px;
+    width: 120px; 
+}
+
+.chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 200px;
+    right: 10px;
+    z-index: 0;
+}
+
+.form-container {
+    max-width: 250px;
+    padding: 10px;
+    background-color: #E8DAEF;
+    margin-bottom: 60px;
+    border-radius: 5px;    
+}
+
+.form-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.form-container textarea {
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin: 5px 0 12px 0;
+    border: 1px solid rgb(172, 168, 168);
+    background: white;
+    resize: none;
+    min-height: 140px;
+    border-radius: 5px;
+}
+
+.form-container .btn {
+    background-color: #371E59;
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer;
+    width: 48%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    display: inline;
+    border-radius: 50px;
+}
+
+.form-container .btn:hover {
+    background-color: rgb(124, 226, 124);
+}
+
+.form-container .cancel {
+    background-color:  #a68cca;
+}
+
+.form-container .cancel:hover {
+    background-color: red;
+}
+
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
+  .foot{
+    color: white;
+    text-align: justify;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: baseline;
+    align-content: center;
+    background-color: #3C273C;
+    height: 130px;
+    padding: 10px;
+    width: 39em;
+
+
+}
+.contact{
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding:10px 14px;
+    
+}
+.address{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding:10px 14px;
+
+
+}
+.socialmedia{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding:10px 14px;
+
+}
+.fa.fa-facebook-f.fa-2x{
+    color: blue;
+}
+.fa.fa-instagram.fa-2x{
+    color: #e68721d6
+}
+.fa.fa-whatsapp.fa-2x{
+    color:green;
+}
+
 }  
 
 @media (max-width: 850px){
@@ -500,8 +716,11 @@ li a{
 .dropdown a:hover{
     background-color: #8e8b8e;
 }
+
+
 .foot{
     height: auto;
 }
+
 }
 

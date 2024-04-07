@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rangsit university, Pick up service</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="nav">
+      <a href="https://www.rsuip.org" target="_blank">
+        <img src="logo.webp" />
+      </a>
+      <h3 id="uniname">Airport Pick-up Service</h3>
+      <ul id="menu">
+        <li><a href="home.html" target="_blank">FAQ</a></li>
+        <li>Blog</li>
+        <li>Courses</li>
+        <li><a href="https://www.rsuip.org" target="_blank">Home </a></li>
+      </ul>
+      <div class="dropdown">
+        <button>
+          <h2>☰</h2>
+        </button>
+        <div class="content">
+          <a href="html.html" target="_blank">FAQ</a>
+          <a href="">Blog</a>
+          <a href="">Courses</a>
+        </div>
+      </div>
+    </header>
+    <h1 class="faq">Frequently Asked Questions</h1>
+    <div class="left-div">
+      <img class="student-photo" src="./student.png" alt="student photo" />
+    </div>
+
+    <div class="container">
+      <h1>Frequently Asked Questions</h1>
+      <div class="tab">
+        <input type="radio" name="ques" id="q1" />
+        <label for="q1">
+          <h2>01</h2>
+          <h3>How do I apply for the pick-up Service?</h3>
+        </label>
+        <div class="content">
+          <p id="form">
+            To apply for Pick up service duely fill up the
+            <a href="./form.html" target="_blank">form</a> and submit it.
+          </p>
+        </div>
+      </div>
+      <div class="tab">
+        <input type="radio" name="ques" id="q2" />
+        <label for="q2">
+          <h2>02</h2>
+          <h3>Is there a fee for this service?</h3>
+        </label>
+        <div class="content">
+          <p>
+            No, the RIC offers free-of-charge pick up service for the safety
+            arrival to school for international students.
+          </p>
+        </div>
+      </div>
+      <div class="tab">
+        <input type="radio" name="ques" id="q3" />
+        <label for="q3">
+          <h2>03</h2>
+          <h3>What airport does the pick up service operate for?</h3>
+        </label>
+        <div class="content">
+          <p>
+            The RIC pick up service operates safe and convenient pick up service
+            for both Don Mueng and Suvarnabhumi airports.
+          </p>
+        </div>
+      </div>
+      <div class="tab">
+        <input type="radio" name="ques" id="q4" />
+        <label for="q4">
+          <h2>04</h2>
+          <h3>How will I recognize the pickup service at the airport?</h3>
+        </label>
+        <div class="content">
+          <p>
+            The RIC pick up service typically provides instructions on how to
+            identify the pickup service, such as meeting points, signage, or
+            contact information for the driver.
+          </p>
+        </div>
+      </div>
+      <button class="open-button" onclick="openForm()">Chat Me</button>
+
+      <div class="chat-popup" id="myForm">
+        <!--<form action="/action_page.php" class="form-container">-->
+        <form class="form-container">
+          <img src="./ric_logo.webp" />
+          <br />
+          <label for="msg" class="chat-text"><b>Chat with RIC </b></label>
+          <textarea
+            class="textareaTop"
+            placeholder="Ask your question :"
+            name="msg"
+            id="user-question"
+            required
+          ></textarea>
+          <label for="ans" class="chat-text"><b>RIC bot</b></label>
+          <textarea
+            placeholder=""
+            id="generate-answer"
+            name="msg"
+            disabled
+          ></textarea>
+
+          <button type="button" id="send" class="btn">Send</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">
+            Close
+          </button>
+        </form>
+      </div>
+
+      <script>
+        function openForm() {
+          document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+          document.getElementById("myForm").style.display = "none";
+
+          //Clear
+          document.querySelector("#user-question").value = "";
+          document.querySelector("#generate-answer").textContent = "";
+        }
+      </script>
+      <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai@0.2.1"
+          }
+        }
+      </script>
+      <!--<p id = "msgI">Hello</p>-->
+      <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+        // Fetch your API_KEY
+        const API_KEY = "AIzaSyBZndVdRadQyh3NohKsiAtUv043BLJ7XLQ";
+        // Access your API key (see "Set up your API key" above)
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        // ...
+
+        /* async function run() {
+        // For text-only input, use the gemini-pro model
+        const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+      
+        const prompt = "Give me a list of famous foods from Myanmar?"
+      
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+        console.log(text);
+      }
+      
+      run(); */
+        // ...
+        /* async function run() {
+         // For text-only input, use the gemini-pro model
+         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+   
+         const chat = model.startChat({
+           history: [
+             {
+               role: "user",
+               parts: "RSU is called Rangsit University.The school starts at 9 a.m.This is data source documentations of the Rangsit University pick up system. If the user asks for any information relating with pickup system, generate the answer by this doucumentations. RSU stands for Rangsit University. It’s located in 52/347 Muang-Ake Phaholyothin Road Lak-Hok Muang Pathumthani 12000 , Thailand. International Student Service Section, Rangsit University provides free airport pick–up as a special service for exchange and full time foreign student (first time arrival). Students are greeted by our ISS staff at the airport and are accompanied to their accommodation booked near the RSU campus.The trip from Suvarnabhumi Airport to Rangsit University takes approximately 40-60 minutes and the trip from Donmuang Airport takes approximately about 20-30 minutes. The travel time will all depend on the traffic situation. The airport pick-up service will be arranged at the beginning of each semester and for first time arrivals to Thailand. ISS will only provide transportation services from the airport to Rangsit University and its affiliate apartments directly.",
+             },
+             
+             
+             
+             {
+               role: "model",
+               parts: "How can I help you? ",
+             },
+           ],
+           generationConfig: {
+             maxOutputTokens: 100,
+           },
+         });
+   
+         const msg = prompt();
+   
+         const result = await chat.sendMessage(msg);
+         const response = await result.response;
+         const text = response.text();
+         showText.textContent = text;
+   
+         console.log(text);
+       }
+   
+       run(); */
+       var enterButton = document.querySelector("#user-question");
+       enterButton.addEventListener('keypress',(event) => {
+         if (event.key === "Enter"){
+           event.preventDefault();
+           document.getElementById("send").click();
+           document.querySelector("#generate-answer").textContent = "";
+         }
+   
+       })
+        const sendQuestion = document.querySelector("#send");
+        sendQuestion.addEventListener("click", async function sendQuestion(){
+          var loadingDots = document.getElementById('generate-answer');
+      // Start the loading animation
+          var loadingInterval = setInterval(function() {
+        // Add a dot to the container
+          loadingDots.textContent = 'Generating please wait' ;
+      }, 500); // Adjust the interval as needed
+          const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+          const chat = model.startChat({
+            history: [
+              {
+                role: "user",
+                parts:
+                  "If user asks questions not related to the information provided below, tell the user to 'Sorry, please ask me about the service only.'.The RSU airport pickup bot is an automated tool designed to assist students with information regarding airport pickup services provided by Loki-ing for Grade A Group(Rangsit University)The Rangsit University pick-up system provides a convenient service for incoming exchange and full-time foreign students. If a user inquires about any information related to the pick-up system, generate the appropriate response using the provided documentation. If there is no relevant information available, respond with: 'For further details and accurate information, please contact LINE@: rangsitinter'.For the brief information of the Pick-up system (if the user asks “tell me RSU pick-up system”), respond with “The RSU airport pickup service offers free transportation from Suvarnabhumi Airport and Donmuang Airport to Rangsit University and its affiliated accommodations for exchange and full-time foreign students, with specific meeting points, booking procedures, and accommodations RSU stands for Rangsit University. It’s located in 52/347 Muang-Ake Phaholyothin Road Lak-Hok Muang Pathumthani 12000 , Thailand. Rangsit University provides free airport pick–up as a special service for exchange and full time foreign students (first time arrival only). The service operates at the beginning of each semester and for first-time arrivals to Thailand. Students can only apply once in the lifetime.To apply for Pick up service duly fill up the form and submit.It is recommended to book your airport pick-up service at least 48 hours before your scheduled arrival. This allows us to ensure a timely and efficient pick-up for you. However, we understand that plans can change, so we also accept last-minute bookings based on availability.you can make changes to your airport pick-up reservation, subject to availability. If you need to modify your details, such as the date, time, or flight information contact our customer support team (LINE@: rangsitinte), and they will assist you in making the necessary changes.  However, pick-up service is not available on weekends and public holidays ​​but the service is available full day during the weekdays.A fine of 3,000 baht is incurred for cancellations made less than 2 days before arrival. The pick-up service covers transportation from Suvarnabhumi Airport and Donmuang Airport to Rangsit University and its affiliated accommodations.To facilitate recognition of the driver assigned for pick-up, specific meeting points have been designated. Pick-up meeting point at Suvarnabhumi Airport: The Meeting Point is located at arrival hall, Gate 3 on the second floor.Pick-up meeting point at Donmuang Airport: The Meeting Point is located at arrival hall, Gate 2 on the first floor.To ensure ease of identification, our drivers often hold a sign with the university's name or logo, making them easily recognizable in the arrivals area. Representatives (drivers) will wait for up to 2 hours after the announced landing time. The meeting points at both airports are specified, with representatives available for up to 2 hours after the announced landing time. If there are any delays or difficulties reaching the meeting point, users are advised to contact LINE@: rangsitinter for assistance. Additionally, if your flight is delayed, our drivers will adjust their schedules accordingly, ensuring they are present to pick you up upon your revised arrival time (additional charges may apply). The approximate travel time from Suvarnabhumi Airport to RSU is 40-60 minutes, and from Don Muang Airport, it's about 20-30 minutes, depending on traffic conditions. The university could provide 2 seats for the airport pickup (1 for the student and 1 for the companion).The service only provides transportation services from the airport to Rangsit University and its affiliate apartments directly but we don’t provide a stop for visit and so we do not provide additional stops.We strive to accommodate passengers with special needs, including wheelchair accessibility. Please inform us of any specific requirements during the booking process, and we will make arrangements to ensure a comfortable and accessible journey for you.(Translate into Thai) บอทรับที่สนามบิน RSU เป็นเครื่องมืออัตโนมัติที่ออกแบบมาเพื่อช่วยเหลือนักเรียนด้วยข้อมูลเกี่ยวกับบริการรับที่สนามบินโดย Loki-ing สำหรับกลุ่มเกรด A (มหาวิทยาลัยรังสิต)ระบบรับ-ส่ง ม.รังสิต ให้บริการที่สะดวกสบายสำหรับนักศึกษาแลกเปลี่ยนขาเข้าและนักศึกษาต่างชาติเต็มเวลา หากผู้ใช้สอบถามเกี่ยวกับข้อมูลใดๆ ที่เกี่ยวข้องกับระบบการรับสินค้า ให้สร้างคำตอบที่เหมาะสมโดยใช้เอกสารที่ให้มา หากไม่มีข้อมูลที่เกี่ยวข้อง ให้ตอบกลับด้วย:หากต้องการรายละเอียดเพิ่มเติมและข้อมูลที่ถูกต้อง โปรดติดต่อ LINE@: rangsitinter สำหรับข้อมูลโดยย่อของระบบ Pick-up (หากผู้ใช้ถามว่า “บอกฉันว่าระบบรับ RSU” ”) ตอบกลับว่า “บริการรับที่สนามบิน RSU ให้บริการรับส่งฟรีจากสนามบินสุวรรณภูมิและสนามบินดอนเมืองไปยังมหาวิทยาลัยรังสิตและที่พักในเครือสำหรับนักศึกษาแลกเปลี่ยนและนักศึกษาต่างชาติเต็มเวลา โดยมีจุดนัดพบ ขั้นตอนการจอง และที่พักเฉพาะ RSU ย่อมาจาก มหาวิทยาลัยรังสิต ตั้งอยู่เลขที่ 52/347 ถนนเมืองเอก ถนนพหลโยธิน หลักหก เมือง ปทุมธานี 12000 ประเทศไทย มหาวิทยาลัยรังสิตมีบริการรับส่งสนามบินฟรีเป็นบริการพิเศษสำหรับนักศึกษาแลกเปลี่ยนและนักศึกษาต่างชาติเต็มเวลา (เฉพาะมาถึงครั้งแรกเท่านั้น) บริการนี้ให้บริการในช่วงต้นของแต่ละภาคการศึกษาและสำหรับผู้ที่เดินทางมาถึงประเทศไทยเป็นครั้งแรก หากต้องการสมัครใช้บริการรับสินค้า โปรดกรอกแบบฟอร์มและส่ง ขอแนะนำให้จองบริการรับส่งที่สนามบินล่วงหน้าอย่างน้อย 48 ชั่วโมงก่อนกำหนดเวลา การมาถึง. สิ่งนี้ช่วยให้เรามั่นใจได้ว่าจะไปรับคุณได้อย่างทันท่วงทีและมีประสิทธิภาพ อย่างไรก็ตาม เราเข้าใจดีว่าแผนสามารถเปลี่ยนแปลงได้ ดังนั้นเราจึงยอมรับการจองนาทีสุดท้ายโดยขึ้นอยู่กับความพร้อมในการให้บริการ คุณสามารถเปลี่ยนแปลงการจองบริการรับที่สนามบินได้ ทั้งนี้ขึ้นอยู่กับความพร้อมในการให้บริการ หากคุณต้องการแก้ไขรายละเอียด เช่น วันที่ เวลา หรือข้อมูลเที่ยวบิน โปรดติดต่อทีมสนับสนุนลูกค้าของเรา (LINE@: rangsitinte) และพวกเขาจะช่วยเหลือคุณในการเปลี่ยนแปลงที่จำเป็น อย่างไรก็ตามไม่มีบริการรับ-ส่งในวันหยุดสุดสัปดาห์และวันหยุดนักขัตฤกษ์ แต่ให้บริการได้เต็มวันในช่วงวันธรรมดา มีโทษปรับ 3,000 บาท หากยกเลิกน้อยกว่า 2 วันก่อนเดินทางมาถึง บริการรับส่งครอบคลุมบริการรับส่งจากสนามบินสุวรรณภูมิและสนามบินดอนเมืองไปยังมหาวิทยาลัยรังสิตและที่พักในเครือ เพื่ออำนวยความสะดวกในการจดจำคนขับที่ได้รับมอบหมายให้ไปรับ จึงได้กำหนดจุดนัดพบเฉพาะไว้ จุดนัดรับที่สนามบินสุวรรณภูมิ: จุดนัดพบตั้งอยู่ที่อาคารผู้โดยสารขาเข้า ประตู 3 ชั้น 2 จุดนัดรับที่สนามบินดอนเมือง: จุดนัดพบอยู่ที่อาคารผู้โดยสารขาเข้า ประตู 2 ชั้น 1 เพื่อให้ง่ายต่อการระบุตัวตน พนักงานขับรถของเรามักจะถือป้ายที่มีชื่อหรือโลโก้ของมหาวิทยาลัย ทำให้สามารถจดจำได้ง่ายในบริเวณที่มาถึง ตัวแทน (คนขับ) จะรอเป็นเวลาสูงสุด 2 ชั่วโมงหลังจากเวลาเครื่องลงที่ประกาศไว้ มีการระบุจุดนัดพบที่สนามบินทั้งสองแห่ง โดยตัวแทนจะพร้อมให้บริการสูงสุด 2 ชั่วโมงหลังจากเวลาเครื่องลงที่ประกาศไว้ หากเกิดความล่าช้าหรือความยากลำบากในการไปยังจุดนัดพบ ขอแนะนำให้ผู้ใช้ติดต่อ LINE@: rangsitinter เพื่อขอความช่วยเหลือ นอกจากนี้ หากเที่ยวบินของคุณล่าช้า พนักงานขับรถของเราจะปรับตารางเวลาให้เหมาะสม เพื่อให้แน่ใจว่าพวกเขาจะมารับคุณตามเวลาที่แก้ไข (อาจมีค่าใช้จ่ายเพิ่มเติม) ระยะเวลาเดินทางโดยประมาณจากสนามบินสุวรรณภูมิไปยัง RSU คือ 40-60 นาที และจากสนามบินดอนเมืองใช้เวลาประมาณ 20-30 นาที ขึ้นอยู่กับสภาพการจราจร มหาวิทยาลัยสามารถจัดให้มีที่นั่งรับส่งสนามบินได้ 2 ที่นั่ง (นักศึกษา 1 ที่นั่ง และเพื่อนร่วมเดินทาง 1 ที่นั่ง) บริการนี้ให้บริการเฉพาะบริการรับส่งจากสนามบินไปมหาวิทยาลัยรังสิตและอพาร์ตเมนต์ในเครือโดยตรงเท่านั้น แต่เราไม่ได้จัดให้มีจุดแวะพักและ ดังนั้นเราจึงไม่มีจุดจอดเพิ่มเติม เรามุ่งมั่นที่จะรองรับผู้โดยสารที่มีความต้องการพิเศษ รวมถึงการอำนวยความสะดวกสำหรับผู้ใช้เก้าอี้รถเข็น โปรดแจ้งให้เราทราบถึงข้อกำหนดเฉพาะใด ๆ ในระหว่างขั้นตอนการจอง และเราจะจัดเตรียมเพื่อให้แน่ใจว่าการเดินทางของคุณจะสะดวกสบายและเข้าถึงได้สำหรับคุณ (Translate into Chinese) RSU 机场接机机器人是一款自动化工具，旨在帮助学生了解有关 Loki-ing 为 A 级组（兰实大学）提供的机场接机服务的信息。兰实大学接送系统为入境交换生和全日制外国学生提供便捷的服务。 如果用户询问与接送系统相关的任何信息，请使用提供的文档生成适当的响应。 如果没有相关信息，请回复：“欲了解更多详细信息和准确信息，请联系LINE@：rangsitinter。”有关接送系统的简要信息（如果用户询问“告诉我RSU接送系统”） ”），回复“RSU接机服务为交换生和全日制外国学生提供从素万那普机场和廊曼机场到兰实大学及其附属住宿的免费交通，并有具体的集合地点、预订程序和住宿”。RSU 代表兰实大学。 它位于 52/347 Muang-Ake Phaholyothin Road Lak-Hok Muang Pathumthani 12000 , 泰国。兰实大学为交换生和全日制外国学生（仅限首次抵达）提供免费机场接机服务。 该服务于每学期初以及首次抵达泰国的旅客提供。如需申请接机服务，请填写表格并提交。建议至少在预定时间前 48 小时预订接机服务 到达。 这使我们能够确保为您提供及时、高效的接送服务。 不过，我们知道计划可能会发生变化，因此我们也接受根据供应情况而定的最后一刻预订。您可以根据供应情况更改您的机场接机预订。 如果您需要修改您的详细信息，例如日期、时间或航班信息，请联系我们的客户支持团队（LINE@：rangsitinte），他们将协助您进行必要的更改。 不过，周末和公众假期不提供接机服务，但工作日全天提供接机服务。抵达前 2 天以内取消预订将收取 3,000 泰铢的罚款。接机服务涵盖从素万那普机场和廊曼机场到兰实大学及其附属住宿的交通。为了方便识别指定接机的司机，已指定特定的集合地点。 素万那普机场接机集合点：集合点位于到达大厅二楼 3 号门。廊曼机场接机集合点：集合点位于到达大厅一楼 2 号门。 为了确保易于识别，我们的司机经常举着带有大学名称或徽标的标牌，以便在到达区轻松辨认。 代表（司机）将在宣布的着陆时间后等待最多 2 小时。 两个机场的集合点均已指定，代表在宣布的着陆时间后最多 2 小时内可以提供服务。 如果到达集合地点有任何延误或困难，建议用户联系 LINE@:rangsitinter 寻求帮助。 此外，如果您的航班延误，我们的司机将相应调整他们的时间表，确保他们在您修改的抵达时间接您（可能会收取额外费用）。 从素万那普机场到 RSU 的大约旅行时间为 40-60 分钟，从廊曼机场大约需要 20-30 分钟，具体取决于交通状况。 大学可提供2个接机座位（1个给学生，1个给同伴）。该服务仅提供从机场直接前往兰实大学及其附属公寓的交通服务，但不提供中途停留参观和接送服务。 因此我们不提供额外的停靠站。我们努力满足有特殊需求的乘客，包括轮椅通道。 请在预订过程中告知我们任何具体要求，我们将做出安排，确保为您提供舒适便捷的旅程。(if you are asked to explain me in Burmese)RSU လေဆိပ်ကြိုပေးသည့်စနစ်BOTသည် Loki-ing For Grade A Group(Rangsit University)မှ ကျောင်းသားများအတွက် လေဆိပ်ကြိုခြင်း ဝန်ဆောင်မှုများနှင့် ပတ်သက်သော အချက်အလက်များကို ကူညီပေးရန် ဒီဇိုင်းထုတ်ထားသော အလိုအလျောက် Botတစ်ခု ဖြစ်သည်။Rangsit University လေဆိပ်ကြိုသည့်စနစ်သည် ထိုင်းနိုင်ငံသို့ ပထမဆုံးအကြိမ်လာရောက်သောကျောင်းသားများအတွက် အဆင်ပြေသော ဝန်ဆောင်မှုကို ပေးပါသည်။ အသုံးပြုသူတစ်ဦးသည် လေဆိပ်ကြိုသည့်စနစ်နှင့်ပတ်သက်သည့် အချက်အလက်တစ်ခုခုကို စုံစမ်းမေးမြန်းပါက ပေးထားသည့်စာရွက်စာတမ်းကို အသုံးပြု၍ သင့်လျော်သောတုံ့ပြန်မှုကို ထုတ်ပြန်ပါ။ သက်ဆိုင်ရာ အချက်အလက်များ မရရှိနိုင်ပါက၊ နောက်ထပ်အသေးစိတ်အချက်အလက်များနှင့် တိကျသောအချက်အလက်များအတွက်၊ LINE@: rangsitinter သို့ ဆက်သွယ်ပါ။ Pick-up စနစ်၏ အကျဉ်းချုံးအချက်အလက်များအတွက် (အသုံးပြုသူမှ မေးလာပါက) “RSU ကောက်သည့်စနစ်(လေဆိပ်ကြိုစနစ်)သည်RSU လေဆိပ် လာယူခြင်းဝန်ဆောင်မှုသည် သုဝဏ္ဏဘူမိလေဆိပ်နှင့် ဒွန်မူးလေဆိပ်မှ Rangsit တက္ကသိုလ်သို့ အခမဲ့ သယ်ယူပို့ဆောင်ရေး ၊ ကြိုတင်စာရင်းသွင်းမှုများအား နိုင်ငံခြားကျောင်းသားများအတွက် ဝန်ဆောင်မှုပေးပါသည်” ဟုအကြောင်းပြန်ပါ။RSU သည် Rangsit University ကို ကိုယ်စားပြုသည်။ ၎င်းသည် 52/347 Muang-Ake Phaholyothin Road Lak-Hok Muang Pathumthani 12000၊ Thailand တွင် တည်ရှိသည်။Rangsit University သည် နိုင်ငံခြားကျောင်းသားများအတွက် အထူးဝန်ဆောင်မှုအဖြစ် လေဆိပ်တွင် အခမဲ့ လာကြိုပေးပါသည်။ ဝန်ဆောင်မှုသည် semester တစ်ခုစီ၏အစတွင်ဖြစ်ပြီး ထိုင်းနိုင်ငံသို့ ပထမဆုံးအကြိမ်ရောက်ရှိခြင်းများအတွက်သာ ဝန်ဆောင်မှုပေးပါသည်။ Pick up ဝန်ဆောင်မှုလျှောက်ထားရန်အတွက် ဖောင်ကို ဖြည့်စွက်ပြီး စာရင်းပေးသွင်းပါ။ သတ်မှတ်ချိန်မတိုင်မီ အနည်းဆုံး 48 နာရီအတွင်း သင်၏လေဆိပ်ကြိုပို့ဝန်ဆောင်မှုကို ကြိုတင်စာရင်းသွင်းရန် အကြံပြုအပ်ပါသည်။ ဆိုက်ရောက်လာရာတွင် သင့်အတွက် အချိန်နှင့်တစ်ပြေးညီ ထိရောက်စွာ ကြို့ပိုမှုကို သေချာစေရန် ကျွန်ုပ်တို့စီစဉ်ထားပါသည်။ သို့သော်လည်း အစီအစဉ်များသည် ပြောင်းလဲနိုင်သည်ကို ကျွန်ုပ်တို့နားလည်ပါသည်၊ ထို့ကြောင့် ပြောင်းလဲမှာများရှိပါက သတင်းအချက်အလက်အပေါ်အခြေခံ၍ နောက်ဆုံးမိနစ်ကြိုတင်မှာယူမှုများပြုပြင်မှုကိုလည်း လက်ခံပါသည်။ ရရှိနိုင်မှုပေါ်မူတည်၍ သင်၏လေဆိပ်ကြိုတင်မှာယူမှုကို အပြောင်းအလဲပြုလုပ်နိုင်ပါသည်။ နေ့စွဲ၊ အချိန် သို့မဟုတ် လေယာဉ်ပျံသန်းမှု အချက်အလက်ကဲ့သို့သော သင်၏အသေးစိတ်အချက်အလက်များကို မွမ်းမံပြင်ဆင်ရန် လိုအပ်ပါက ကျွန်ုပ်တို့၏ ဖောက်သည်ကူညီသည့်ဝန်ဆောင်အသင်း (LINE@: rangsitinte) သို့ ဆက်သွယ်ပါ၊ ၎င်းတို့သည် သင့်အား လိုအပ်သောပြောင်းလဲမှုများပြုလုပ်ရာတွင် ကူညီပေးပါမည်။ သို့သော်လည်း စနေ၊ တနင်္ဂနွေနှင့် အစိုးရရုံးပိတ်ရက်များတွင် ကားအသွားအလာ ဝန်ဆောင်မှုကို မရရှိနိုင်သော်လည်း စနေ၊ တနင်္ဂနွေများမှအပ ကျန်ရက်မျာားအတွင်း တစ်နေကုန် ဝန်ဆောင်မှုပေးပါသည်။ ဆိုက်ရောက်မတိုင်မီ ၂ ရက်ထက်လျော့၍ ဖျက်သိမ်းမှုအတွက် ဒဏ်ငွေ ဘတ် ၃၀၀၀ ပေးဆောင်ရမည်ဖြစ်ပါသည်။လာယူခြင်းဝန်ဆောင်မှုသည် သုဝဏ္ဏဘူမိလေဆိပ်နှင့် ဒွန်မူးလေဆိပ်မှ Rangsit တက္ကသိုလ်အထိသာ သယ်ယူပို့ဆောင်ရေး အကျုံးဝင်ပါသည်။ လာယူမည့်ယာဉ်မောင်းအား အသိအမှတ်ပြုမှု လွယ်ကူစေရန်အတွက် သတ်မှတ်ထားသော အစည်းအဝေးအမှတ်များ သတ်မှတ်ပေးထားပါသည်။ သုဝဏ္ဏဘူမိလေဆိပ်တွင် အစည်းအဝေး လာယူမည့်နေရာ- Meeting Point သည် ဆိုက်ရောက်ခန်းမ၊ ဒုတိယထပ် Gate 3 တွင် တည်ရှိပါသည်။ အစည်းအဝေး ခေါ်ယူသည့်နေရာသည် Donmuang လေဆိပ်တွင် ဖြစ်သည်- Meeting Point သည် ဆိုက်ရောက်ခန်းမ၊ ပထမထပ် Gate 2 တွင် တည်ရှိသည်။ သက်သေခံလွယ်ကူစွာတွေ့ရှိစေရန်အတွက်၊ ကျွန်ုပ်တို့၏ယာဉ်မောင်းများသည် တက္ကသိုလ်၏အမည် သို့မဟုတ် လိုဂိုပါသော ဆိုင်းဘုတ်ကို ကိုင်ဆောင်ကာ ဆိုက်ရောက်ရာနေရာ၌ စောင့်၍နေပါမည်။ ကိုယ်စားလှယ်များ (ယာဉ်မောင်းများ) သည် ဆင်းသက်ချိန်ကို ကြေညာပြီးနောက် ၂ နာရီအထိ စောင့်ပါမည်။ လေဆိပ်နှစ်ခုလုံးရှိ အစည်းအဝေးအမှတ်များကို သတ်မှတ်ထားပြီး လေယာဉ်ဆင်းသက်ချိန်မှ ၂ နာရီအထိ ကိုယ်စားလှယ်များကို ရရှိနိုင်မည်ဖြစ်သည်။ အစည်းအဝေးအမှတ်သို့ရောက်ရှိရန် နှောင့်နှေးမှုများ သို့မဟုတ် အခက်အခဲများရှိပါက အသုံးပြုသူများအား အကူအညီရယူရန်အတွက် LINE@: rangsitinter သို့ ဆက်သွယ်ရန် အကြံပြုအပ်ပါသည်။ ထို့အပြင်၊ သင်၏လေယာဉ်ခရီးစဉ်နှောင့်နှေးပါက၊ ကျွန်ုပ်တို့၏ယာဉ်မောင်းများသည် သင်၏ပြင်ဆင်ထားသောဆိုက်ရောက်ချိန်၌ သင့်ထံလာကြိုရန် ရှိနေကြောင်းသေချာစေရန် ကျွန်ုပ်တို့၏ယာဉ်မောင်းများသည် ၎င်းတို့၏အချိန်ဇယားများကို ချိန်ညှိပေးပါမည်။သုဝဏ္ဏဘူမိလေဆိပ်မှ RSU သို့ ခန့်မှန်းခရီးသည် မိနစ် ၄၀ မှ ၆၀ ရှိပြီး ဒွန်မောင်းလေဆိပ်မှ ယာဉ်အသွားအလာအခြေအနေပေါ်မူတည်၍ မိနစ် ၂၀ မှ ၃၀ ခန့်ဖြစ်သည်။ ကြိုပို့ဝန်ဆောင်မှုသည် ထိုင်ခုံ (၂) ခုံ (ကျောင်းသားအတွက် 1 ခုံနှင့် အဖော်အတွက် 1 ခုံ) ကို ပံ့ပိုးပေးနိုင်သည်။ ဝန်ဆောင်မှုသည် လေဆိပ်မှ Rangsit တက္ကသိုလ်နှင့် ၎င်း၏ တွဲဖက်တိုက်ခန်းများသို့ တိုက်ရိုက် သယ်ယူပို့ဆောင်ရေး ဝန်ဆောင်မှုများကိုသာ ဆောင်ရွက်ပေးပြီး လည်ပတ်ရန် ရပ်နားထားခြင်း မရှိပါ။ ထို့ကြောင့် ကျွန်ုပ်တို့သည် ထပ်လောင်းမှတ်တိုင်များကို မပံ့ပိုးပေးတော့ပါ။ ဘီးတပ်ကုလားထိုင်အသုံးပြုခွင့်အပါအဝင် အထူးလိုအပ်ချက်များဖြင့် ခရီးသည်များကို လိုက်လျောညီထွေဖြစ်အောင် ကြိုးပမ်းဆောင်ရွက်ပါသည်။ ကျေးဇူးပြု၍ ကြိုတင်စာရင်းသွင်းခြင်းလုပ်ငန်းစဉ်အတွင်း တိကျသောလိုအပ်ချက်များကို ကျွန်ုပ်တို့အား အသိပေးပါ၊ သင့်အတွက် သက်တောင့်သက်သာရှိပြီး သွားလာနိုင်သောခရီးကိုသေချာစေရန် ကျွန်ုပ်တို့မှ စီစဉ်ဆောင်ရွက်ပေးပါမည်",
+              },
+              {
+                role: "model",
+                parts: "How can I help you? ",
+              },
+            ],
+            generationConfig: {
+              maxOutputTokens: 30000,
+            },
+          });
+          const userQuestion = document.querySelector("#user-question").value;
+          const result = await chat.sendMessage(userQuestion);
+          const response = await result.response;
+          const answer = response.text();
+          clearInterval(loadingInterval);
+
+          var showText = document.getElementById("generate-answer");
+          showText.textContent = answer;
+        });
+      </script>
+    </div>
+    <footer class="foot">
+      <div class="contact">
+        <h4>CONTACT US</h4>
+        <ul class="links contact-icons">
+          <li>
+            <a href="#"
+              ><i class="fa fa-envelope"></i> Email : rsuip@rsu.ac.th</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa fa-phone"></i> Telephone : + 66 (0)2 997-2200 ext
+              4012,4019</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa fa-fax"></i> Fax : +66 (0)2 997-2200 ext 4016</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="address">
+        <h4>ADDRESS</h4>
+        <ul class="links contact-icons">
+          <li>
+            <a href="#"
+              ><i class="fa fa-map-marker fa-2x"></i> 52/347 Muang-Ake
+              Phaholyothin Road Lak-Hok Muang Pathumthani 12000, Thailand</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="socialmedia">
+        <h4>SOCIAL MEDIA</h4>
+        <p><i class="fa fa-paper-plane"></i> Follow us...</p>
+        <div class="icons" id="smicon">
+          <a href="https://web.facebook.com/RSUIP/?_rdc=1&_rdr" target="_blank"
+            ><i class="fa fa-facebook-f fa-2x"></i
+          ></a>
+          <a href="https://www.instagram.com/rangsit_inter/" target="_blank"
+            ><i class="fa fa-instagram fa-2x"></i
+          ></a>
+          <a href="https://line.me/ti/p/~@rsuinter" target="_blank"
+            ><i class="fa fa-whatsapp fa-2x"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
